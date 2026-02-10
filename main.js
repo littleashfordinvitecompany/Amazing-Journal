@@ -78,7 +78,7 @@ function startJournal(){
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${today}`;
 
     const pool=questions.filter(p=>p.ageMin<=currentUser.age&&p.ageMax>=currentUser.age);
-    currentQuestions = pool[Math.floor(Math.random()*pool.length)];
+    currentQuestions = pool.sort(() => 0.5 - Math.random()).slice(0, 2);
 
     $("daily-qu-1").textContent=currentQuestions[0].text;
     $("daily-answer-1").style.display="block";
@@ -110,7 +110,7 @@ function clearCanvas(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
 }
 
-document.querySelectorAll("#mood-picker button").foreach(b => {
+document.querySelectorAll("#mood-picker button").forEach(b => {
     b.onclick = ()=>{ mood.push(b.id);}
 });
 
