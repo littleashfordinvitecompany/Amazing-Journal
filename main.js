@@ -50,7 +50,7 @@ $("save-user-btn").onclick=()=>{
 };
 
 $("user-select").onchange=()=>{
-    if($("user-select").value === none)return;
+    if($("user-select").value==="none")return;
     const users=JSON.parse(localStorage.getItem("users")||"[]");
     currentUser = users.find(user=>user.name===$("user-select").value);
     hideAll();
