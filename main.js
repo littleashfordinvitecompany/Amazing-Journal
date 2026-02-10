@@ -91,6 +91,10 @@ const ctx = canvas.getContext("2d");
 let drawing = false;
 let colour = "black";
 
+document.querySelectorAll(".colours button").forEach(b => {
+    b.onclick = ()=>{ colour = b.value; };
+});
+
 canvas.addEventListener("pointerdown", ()=>{drawing = true;});
 canvas.addEventListener("pointerup", ()=>{drawing = false; ctx.beginPath();});
 canvas.addEventListener("pointermove", e=>{
