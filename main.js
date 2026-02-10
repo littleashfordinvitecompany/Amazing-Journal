@@ -55,7 +55,7 @@ $("user-select").onchange=()=>{
     currentUser = users.find(user=>user.name===$("user-select").value);
     hideAll();
     $("selection-page").style.display="block";
-    $("welcome-msg").innerText=`Welcome ${currentUser.name} !`;
+    $("welcome-msg").innerText=`Welcome ${currentUser.name}!`;
 };
 
 $("add-page-btn").onclick=()=>{
@@ -79,9 +79,9 @@ function startJournal(){
     const pool=questions.filter(p=>p.ageMin<=currentUser.age&&p.ageMax>=currentUser.age);
     currentQuestions = pool[Math.floor(Math.random()*pool.length)];
 
-    $("daily-qu-1").innerText=currentQuestions[0].text;
+    $("daily-qu-1").textContent=currentQuestions[0].text;
     $("daily-answer-1").style.display="block";
-    $("daily-qu-2").innerText=currentQuestions[1].text;
+    $("daily-qu-2").textContent=currentQuestions[1].text;
     $("daily-answer-2").style.display="block";
 }
 
