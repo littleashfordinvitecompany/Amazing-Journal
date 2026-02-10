@@ -23,6 +23,10 @@ function hasEntryToday(name){
 function loadUsers(){
     const users = JSON.parse(localStorage.getItem("users")||"[]");
     $("user-select").innerHTML='';
+    const option = document.createElement("option");
+    option.textContent = --Select--;
+    option.value = none;
+    $("user-select").appendChild(option);
     users.forEach(user => {
         const option = document.createElement("option");
         option.textContent = user.name;
@@ -45,7 +49,8 @@ $("save-user-btn").onclick=()=>{
     hideAll();
 };
 
-$("user-select").onselect=()=>{
+$("user-select").onchange=()=>{
+    if($("user-select").value === none)return;
     const users=JSON.parse(localStorage.getItem("users")||"[]");
     currentUser = users.find(user=>user.name===$("user-select").value);
     hideAll();
