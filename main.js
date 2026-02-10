@@ -47,7 +47,7 @@ $("save-user-btn").onclick=()=>{
     users.push({name, age});
     localStorage.setItem("users",JSON.stringify(users));
     loadUsers();
-    hideAll();
+    $("new-user-form").style.display="none";
 };
 
 $("user-select").onchange=()=>{
@@ -147,7 +147,7 @@ $("save-entry-btn").onclick=() => {
         achievement: earnedAchievement,
     };
     localStorage.setItem("entries",JSON.stringify(entries));
-    $("achievement").innerHTML='<img src="achievements/${earnedAchievement}" alt="achievement!"/>';
+    $("achievement").innerHTML='<img src"achievements/${earnedAchievement}" alt="achievement!"/>';
 };
 
 function loadPrevious(){
