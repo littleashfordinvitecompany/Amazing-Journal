@@ -42,9 +42,10 @@ $("save-user-btn").onclick=()=>{
     users.push({name, age});
     localStorage.setItem("users",JSON.stringify(users));
     loadUsers();
+    hideAll();
 };
 
-$("user-select").onchange=()=>{
+$("user-select").onselect=()=>{
     const users=JSON.parse(localStorage.getItem("users")||"[]");
     currentUser = users.find(user=>user.name===$("user-select").value);
     hideAll();
