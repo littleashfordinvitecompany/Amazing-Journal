@@ -28,3 +28,7 @@ canvas {
     border-radius: 10px;
     touch-action: none;
 }
+
+.good-things {
+    width:60%;
+}
