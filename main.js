@@ -23,7 +23,7 @@ function hasEntryToday(name){
 function loadUsers(){
     $("user-select").innerHTML='';
     const blankOption = document.createElement("option");
-    blankOption.textContent = --Select--;
+    blankOption.textContent = "--Select--";
     blankOption.value = "none";
     $("user-select").appendChild(blankOption);
     
