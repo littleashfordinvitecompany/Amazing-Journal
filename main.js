@@ -21,12 +21,13 @@ function hasEntryToday(name){
 }
 
 function loadUsers(){
-    const users = JSON.parse(localStorage.getItem("users")||"[]");
     $("user-select").innerHTML='';
-    const option = document.createElement("option");
-    option.textContent = --Select--;
-    option.value = none;
-    $("user-select").appendChild(option);
+    const blankOption = document.createElement("option");
+    blankOption.textContent = --Select--;
+    blankOption.value = none;
+    $("user-select").appendChild(blankOption);
+    
+    const users = JSON.parse(localStorage.getItem("users")||"[]");
     users.forEach(user => {
         const option = document.createElement("option");
         option.textContent = user.name;
