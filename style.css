@@ -1,0 +1,30 @@
+body {
+    font-family: Avenir, sans-serif;
+    background-color: blanchedalmond;
+    text-align: center;
+}
+.app {
+    max-width: 800px;
+    margin: auto;
+}
+
+button {
+    border: none;
+    font-size: 22px;
+    background-color: white;
+    border-radius: 12px;
+    margin: 6px;
+}
+
+textarea {
+    border-radius: 10px;
+    width: 80%;
+    height: 90px;
+    font-size: 18px;
+}
+
+canvas {
+    border: 2px solid black;
+    border-radius: 10px;
+    touch-action: none;
+}

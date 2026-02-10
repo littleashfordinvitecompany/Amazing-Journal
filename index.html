@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <title>My Amazing Journal</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>My Amazing Journal</h1>
+    <div id="home-page" class="section">
+        <h2>Who is using the journal</h2>
+        <select id="user-select"></select>
+        <button id="add-user-btn">Add new user</button>
+
+        <div id="new-user-form" style="display:none;">
+            <label for="new-user-name">Name:</label><input type="text" id="new-user-name" />
+            <label for="new-user-age">Age:</label><input type="number" min="3" max="140" id="new-user-age" />
+            <button id="save-user-btn">Save</button>
+        </div>
+    </div>
+
+    <div id="selection-page" class="section" style="display:none;">
+        <h2 id="welcome-msg"></h2>
+        <button id="add-page-btn">Add today's entry</button>
+        <button id="previous-pages-btn">See previous entries</button>
+        <button id="achievements-btn">My achievements</button>
+    </div>
+
+    <div id="journal-page" class="section" style="display:none;">
+        <h2 id="journal-welcome"></h2>
+        <div id="mood-picker">
+            <h3>How did we feel today?</h3>
+            <button id="happy">Happy</button>
+            <button id="sad">Sad</button>
+            <button id="calm">Calm</button>
+            <button id="excited">Excited</button>
+            <button id="tired">Tired</button>
+            <button id="worried">Worried</button>
+            <button id="safe">Safe</button>
+            <button id="angry">Angry</button>
+            <label for="other-emotion">Other:</label><input type="text" id="other-emotion" />
+        </div>
+
+        <div id="fixed-questions">
+            <h3>3 Good things today</h3>
+            <label for="good-thing-1">1:</label><input type="text" id="good-thing-1" />
+            <label for="good-thing-2">2:</label><input type="text" id="good-thing-2" />
+            <label for="good-thing-3">3:</label><input type="text" id="good-thing-3" />
+        </div>
+
+        <div id="daily-questions">
+            <label for="daily-answer-1" id="daily-qu-1"></label>
+            <textarea id="daily-answer-1"></textarea>
+            <label for="daily-answer-2" id="daily-qu-2"></label>
+            <textarea id="daily-answer-2"></textarea>
+        </div>
+
+        <div id="draw-section">
+            <button id="draw-btn">Draw</button>
+            <div id="draw-area" style="display:none;">
+                <div class="colours">
+                    <button id="black">Black</button>
+                    <button id="white">White</button>
+                    <button id="red">Red</button>
+                    <button id="green">Green</button>
+                    <button id="blue">Blue</button>
+                    <button id="yellow">Yellow</button>
+                    <button id="pink">Pink</button>
+                </div>
+                <canvas id="draw-canvas"></canvas>
+                <button id="clear-canvas">Clear</button>
+            </div>
+        </div>
+
+        <button id="save-entry-btn">Save entry</button>
+        <div id="achievement"></div>
+        <button id="back-journal-btn"><-- Back</button>
+
+        <div id="previous-page" class="section" style="display:none;">
+            <h2>Previous entries</h2>
+            <ul id="entries-list"></ul>
+            <button id="back-from-previous"><-- Back</button>
+        </div>
+
+        <div id="achievements-page" class="section" style="display:none;">
+            <h2>My achievements</h2>
+            <div id="achievements-list"></div>
+            <button id="back-from-achievements"><-- Back</button>
+        </div>
+    </div>
+
+<script src="main.js"></script>
+</body>
+</html>
