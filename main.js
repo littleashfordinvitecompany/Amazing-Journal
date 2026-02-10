@@ -24,7 +24,7 @@ function loadUsers(){
     $("user-select").innerHTML='';
     const blankOption = document.createElement("option");
     blankOption.textContent = --Select--;
-    blankOption.value = none;
+    blankOption.value = "none";
     $("user-select").appendChild(blankOption);
     
     const users = JSON.parse(localStorage.getItem("users")||"[]");
