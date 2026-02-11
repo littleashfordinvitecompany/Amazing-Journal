@@ -95,7 +95,7 @@ document.querySelectorAll(".colours button").forEach(b => {
     b.onclick = ()=>{ colour = b.value; };
     b.style.color = b.id
 });
-canvas.width=80%;
+canvas.widt=window.innerWidth * 0.8;
 canvas.addEventListener("pointerdown", ()=>{drawing = true;});
 canvas.addEventListener("pointerup", ()=>{drawing = false; ctx.beginPath();});
 canvas.addEventListener("pointermove", e=>{
@@ -107,6 +107,10 @@ canvas.addEventListener("pointermove", e=>{
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(e.clientX-r.left,e.clientY-r.top);
+});
+
+window.addEventListener('resize', () => {
+   canvas.widt=window.innerWidth * 0.8; 
 });
 
 $("clear-canvas").onclick=clearCanvas;
