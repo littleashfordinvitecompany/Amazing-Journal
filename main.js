@@ -95,7 +95,6 @@ function selectCorrectBgColorForText(textColour) {
     const temp = document.createElement('div')
     temp.style.color = textColour;
     document.body.appendChild(temp);
-    console.log("TextColour: "+textColour);
     const rgb = getComputedStyle(temp).color;
     document.body.removeChild(temp);
     
