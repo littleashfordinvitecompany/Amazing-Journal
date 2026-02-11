@@ -95,12 +95,15 @@ function selectCorrectBgColorForText(textColour) {
     const temp = document.createElement('div')
     temp.style.color = textColour;
     document.body.appendChild(temp);
-
+    console.log("TextColour: "+textColour);
     const rgb = getComputedStyle(temp).color;
     document.body.removeChild(temp);
+    console.log("RGB: "+rgb);
     
     const [r,g,b] = rgb.match(/\d+/g).map(Number);
+    console.log("R:"+r+ ", G:"+g+", B:"+b);
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    console.log("Brightness: "+brightness);
     return brightness > 125 ? '#000' : '#fff'
 }
 
@@ -110,6 +113,7 @@ document.querySelectorAll(".colours button").forEach(b => {
     b.style.bgColor = selectCorrectBgColorForText(b.id)
 });
 canvas.width=window.innerWidth * 0.8;
+canvas.height=window.innerHeight * 0.8;
 canvas.addEventListener("pointerdown", ()=>{drawing = true;});
 canvas.addEventListener("pointerup", ()=>{drawing = false; ctx.beginPath();});
 canvas.addEventListener("pointermove", e=>{
@@ -125,6 +129,7 @@ canvas.addEventListener("pointermove", e=>{
 
 window.addEventListener('resize', () => {
    canvas.width=window.innerWidth * 0.8; 
+   canvas.height=window.innerHeight * 0.8;
 });
 
 $("clear-canvas").onclick=clearCanvas;
