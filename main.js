@@ -93,6 +93,7 @@ let colour = "black";
 
 document.querySelectorAll(".colours button").forEach(b => {
     b.onclick = ()=>{ colour = b.value; };
+    b.style.color = b.id
 });
 canvas.width=600;
 canvas.addEventListener("pointerdown", ()=>{drawing = true;});
