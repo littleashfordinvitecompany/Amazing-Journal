@@ -91,11 +91,18 @@ const ctx = canvas.getContext("2d");
 let drawing = false;
 let colour = "black";
 
+function selectCorrectBgColorForText(textColour) {
+    const [r,g,b] = textColour.match(/\d+g).map(Number);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness > 125 ? '#000' : '#fff'
+}
+
 document.querySelectorAll(".colours button").forEach(b => {
     b.onclick = ()=>{ colour = b.value; };
     b.style.color = b.id
+    b.style.bgColor = selectCorrectBgColorForText(b.id)
 });
-canvas.widt=window.innerWidth * 0.8;
+canvas.width=window.innerWidth * 0.8;
 canvas.addEventListener("pointerdown", ()=>{drawing = true;});
 canvas.addEventListener("pointerup", ()=>{drawing = false; ctx.beginPath();});
 canvas.addEventListener("pointermove", e=>{
@@ -110,7 +117,7 @@ canvas.addEventListener("pointermove", e=>{
 });
 
 window.addEventListener('resize', () => {
-   canvas.widt=window.innerWidth * 0.8; 
+   canvas.width=window.innerWidth * 0.8; 
 });
 
 $("clear-canvas").onclick=clearCanvas;
