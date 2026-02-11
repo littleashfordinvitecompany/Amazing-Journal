@@ -105,7 +105,7 @@ function selectCorrectBgColorForText(textColour) {
 }
 
 document.querySelectorAll(".colours button").forEach(b => {
-    b.onclick = ()=>{ colour = b.value; };
+    b.onclick = ()=>{ colour = b.id; };
     b.style.color = b.id
     b.style.backgroundColor = selectCorrectBgColorForText(b.id)
 });
