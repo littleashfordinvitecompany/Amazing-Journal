@@ -26,27 +26,27 @@ textarea {
     border-radius: 10px;
     width: 80%;
     height: 75px;
-    font-size: 20px;
-    display: inline-block;
+    display: block;
     margin: 10px;
-    align-items: center;
+    text-indent: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input {
     margin: 10px;
     padding: 5px;
     border-radius: 10px;
-    display: inline-block;
 }
 
 canvas {
     border: 2px solid black;
     border-radius: 10px;
     touch-action: none;
-    display: inline-block;
 }
 
 .good-things {
     width:80%;
     border-radius: 10px;
 }
+
