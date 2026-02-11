@@ -1,10 +1,14 @@
 body {
     font-family: Avenir, sans-serif;
+    color: white;
     background-color: blanchedalmond;
     background-image: url(background.jpg);
     background-size: cover;
     background-position: center:
     background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     margin: 15px;
@@ -35,6 +39,7 @@ button {
     padding: 0px 5px;
     border: none;
     font-size: 20px;
+    color: black;
     background-color: white;
     border-radius: 20px;
     margin: 5px;
