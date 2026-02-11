@@ -1,6 +1,10 @@
 body {
     font-family: Avenir, sans-serif;
     background-color: blanchedalmond;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center:
+    background-repeat: no-repeat;
     text-align: center;
     align-items: center;
     margin: 15px;
