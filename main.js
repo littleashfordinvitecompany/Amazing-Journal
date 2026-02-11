@@ -110,7 +110,7 @@ function selectCorrectBgColorForText(textColour) {
 document.querySelectorAll(".colours button").forEach(b => {
     b.onclick = ()=>{ colour = b.value; };
     b.style.color = b.id
-    b.style.bgColor = selectCorrectBgColorForText(b.id)
+    b.style.backgroundcolor = selectCorrectBgColorForText(b.id)
 });
 canvas.width=window.innerWidth * 0.8;
 canvas.height=window.innerHeight * 0.8;
