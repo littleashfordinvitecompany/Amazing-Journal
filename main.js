@@ -92,7 +92,7 @@ let drawing = false;
 let colour = "black";
 
 function selectCorrectBgColorForText(textColour) {
-    const [r,g,b] = textColour.match(/\d+g).map(Number);
+    const [r,g,b] = textColour.match(/\d+/g).map(Number);
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
     return brightness > 125 ? '#000' : '#fff'
 }
