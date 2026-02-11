@@ -67,7 +67,12 @@ $("add-page-btn").onclick=()=>{
     startJournal();
 };
 
-$("draw-btn").onclick=()=>{$("draw-area").style.display="block"; clearCanvas();}
+$("draw-btn").onclick=()=>{
+    var newDisplayStyle = "none"
+    const displayStyle = $("draw-area").style.display;
+    if(displayStyle === "none")newDisplayStyle = "block";
+    $("draw-area").style.display=newDisplayStyle; clearCanvas();
+}
 
 $("previous-pages-btn").onclick=()=>{ hideAll(); loadPrevious(); }
 $("achievements-btn").onclick=()=>{ hideAll(); loadAchievements(); }
