@@ -80,7 +80,8 @@ $("achievements-btn").onclick=()=>{ hideAll(); loadAchievements(); }
 function startJournal(){
     hideAll();
     $("journal-page").style.display="block";
-    $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${today}`;
+    const formattedToday = new Date(today).toLocaleDateString();
+    $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
     const pool=questions.filter(p=>p.ageMin<=currentUser.age&&p.ageMax>=currentUser.age);
     currentQuestions = pool.sort(() => 0.5 - Math.random()).slice(0, 2);
@@ -185,20 +186,17 @@ function loadPrevious(){
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
     console.log("Previous Entries: " + JSON.stringify(userEntries));
 
-    userEntries.forEach(list => {
-        const container = $("entries-list");
-        const ul = document.createElement("ul");
+    const container = $("entries-list");
+    const ul = document.createElement("ul");
 
-        list.forEach(entry => {
-            const date = Object.key(entry)[0];
-            const data = entry[date];
-            
-            const li = document.createElement("li");
-            li.textContent = "${date} - ${data.mood}";
-            ul.appendChild(li);
-        });
-        container.replaceChildren(ul);
+    Objects.entries(userEntries).forEach(([date, data) => {        
+        const li = document.createElement("li");
+        const formattedDate = new Date(date).toLocaleDateString();
+        
+        li.textContent = "${formattedDate} - ${data.mood}";
+        ul.appendChild(li);
     });
+    container.replaceChildren(ul);
 }
 
 function loadAchievements(){
