@@ -155,19 +155,20 @@ function getRandomAchievement() {
 }
 
 $("save-entry-btn").onclick=() => {
-    if(!mood) return alert("You've not selected how you feel");
+    if(!mood.length) return alert("You've not selected how you feel");
+    if(!$("good-thing-1").value || !$("good-thing-2").value || !$("good-thing-3").value || !$("daily-ans-1").value || !$("daily-ans-2").value) return alert("Please complete the questions");
     const earnedAchievement = getRandomAchievement();
     const entries=JSON.parse(localStorage.getItem("entries")||"{}");
     entries[currentUser.name]=entries[currentUser.name]||{};
     entries[currentUser.name][today]= {
-        mood,
-        goodThing1: $("good-thing-1"),
-        goodThing2: $("good-thing-2"),
-        goodThing3: $("good-thing-3"),
+        mood: mood,
+        goodThing1: $("good-thing-1").value,
+        goodThing2: $("good-thing-2").value,
+        goodThing3: $("good-thing-3").value,
         dailyQu1: currentQuestions[0].value,
-        dailyAns1: $("daily-ans-1"),
+        dailyAns1: $("daily-ans-1").value,
         dailyQu2: currentQuestions[1].value,
-        dailyAns2: $("daily-ans-2"),
+        dailyAns2: $("daily-ans-2").value,
         draw: canvas.toDataURL("image/png"),
         achievement: earnedAchievement,
     };
