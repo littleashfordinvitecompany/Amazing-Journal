@@ -183,7 +183,7 @@ function loadPrevious(){
     hideAll();
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
-    Console.log("Previous Entries: " + userEntries);
+    console.log("Previous Entries: " + userEntries);
     $("entries-list").innerHTML='';
     Object.keys(userEntries).forEach(d=>{
         const li=document.createElement("li");
