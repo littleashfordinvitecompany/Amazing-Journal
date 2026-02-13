@@ -140,7 +140,7 @@ function clearCanvas(){
 }
 
 document.querySelectorAll("#mood-picker button").forEach(b => {
-    b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id : [...mood, b.id];}
+    b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id) : [...mood, b.id];}
 });
 
 $("other-emotion").addEventListener("blur", (event) => {
