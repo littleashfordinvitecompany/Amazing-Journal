@@ -185,7 +185,7 @@ function loadPrevious(){
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
     console.log("Previous Entries: " + JSON.stringify(userEntries));
 
-    userEntries.then(res => res.json()).then(list => {
+    userEntries.forEach(list => {
         const container = $("entries-list");
         const ul = document.createElement("ul");
 
