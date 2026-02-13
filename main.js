@@ -158,6 +158,7 @@ $("save-entry-btn").onclick=() => {
     if(!mood.length) return alert("You've not selected how you feel");
     if(!$("good-thing-1").value || !$("good-thing-2").value || !$("good-thing-3").value || !$("daily-answer-1").value || !$("daily-answer-2").value) return alert("Please complete the questions");
     const earnedAchievement = getRandomAchievement();
+    console.log("Earned Achievement: " + earnedAchievement);
     const entries=JSON.parse(localStorage.getItem("entries")||"{}");
     entries[currentUser.name]=entries[currentUser.name]||{};
     entries[currentUser.name][today]= {
@@ -173,13 +174,16 @@ $("save-entry-btn").onclick=() => {
         achievement: earnedAchievement,
     };
     localStorage.setItem("entries",JSON.stringify(entries));
-    $("achievement").innerHTML='<img src"achievements/${earnedAchievement}" alt="achievement!"/>';
+    const imageSrc = "achievements/${earnedAchievement}";
+    console.log("ImageSrc: " + imageSrc);
+    $("achievement").innerHTML='<img src"${imageSrc}" alt="achievement!"/>';
 };
 
 function loadPrevious(){
     hideAll();
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
+    Console.log("Previous Entries: " + userEntries;
     $("entries-list").innerHTML='';
     Object.keys(userEntries).forEach(d=>{
         const li=document.createElement("li");
