@@ -140,7 +140,7 @@ function clearCanvas(){
 }
 
 document.querySelectorAll("#mood-picker button").forEach(b => {
-    b.onclick = ()=>{ mood.push(b.id);}
+    b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id : [...mood, b.id];}
 });
 
 $("other-emotion").addEventListener("blur", (event) => {
@@ -184,12 +184,21 @@ function loadPrevious(){
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
     console.log("Previous Entries: " + JSON.stringify(userEntries));
-    $("entries-list").innerHTML='';
-    Object.keys(userEntries).forEach(d=>{
-        const li=document.createElement("li");
-        li.innerHTML=`${d} - ${userEntries[d].mood}`;
-        $("entries-list").append(li);
-    })
+
+    userEntries.then(res => res.json()).then(list => {
+        const container = $("entries-list");
+        const ul = document.createElement("ul");
+
+        list.forEach(entry => {
+            const date = Object.key(entry)[0];
+            const data = entry[date];
+            
+            const li = document.createElement("li");
+            li.textContent = "${date} - ${data.mood}";
+            ul.appendChild(li);
+        });
+        container.replaceChildren(ul);
+    });
 }
 
 function loadAchievements(){
