@@ -185,8 +185,9 @@ function loadPrevious(){
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
 
-    const ul = $("entries-list");
-
+    const container = $("entries-list");
+    const ul = document.createElement("ul");
+    
     Object.entries(userEntries).forEach(([date, data]) => {
         const li = document.createElement("li");
         const formattedDate = new Date(date).toLocaleDateString();
@@ -195,6 +196,7 @@ function loadPrevious(){
         li.textContent = "${formattedDate} - ${data.mood}";
         ul.appendChild(li);
     });
+    container.replaceChildren(ul);
 }
 
 function loadAchievements(){
