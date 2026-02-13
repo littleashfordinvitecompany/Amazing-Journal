@@ -184,21 +184,17 @@ function loadPrevious(){
     hideAll();
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
-    console.log("Previous Entries: " + JSON.stringify(userEntries));
 
-    const container = $("entries-list");
-    const ul = document.createElement("ul");
+    const ul = $("entries-list");
 
     Object.entries(userEntries).forEach(([date, data]) => {
-        console.log("date: " + date);
-        console.log("data: " + JSON.stringify(data));
         const li = document.createElement("li");
         const formattedDate = new Date(date).toLocaleDateString();
-        
+        console.log("formattedDate: "+ formattedDate);
+        console.log("mood: "+ data.mood);
         li.textContent = "${formattedDate} - ${data.mood}";
         ul.appendChild(li);
     });
-    container.replaceChildren(ul);
 }
 
 function loadAchievements(){
