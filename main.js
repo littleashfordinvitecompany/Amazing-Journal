@@ -189,7 +189,7 @@ function loadPrevious(){
     const container = $("entries-list");
     const ul = document.createElement("ul");
 
-    Objects.entries(userEntries).forEach(([date, data) => {        
+    Objects.entries(userEntries).forEach(([date, data]) => {        
         const li = document.createElement("li");
         const formattedDate = new Date(date).toLocaleDateString();
         
