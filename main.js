@@ -7,6 +7,7 @@ let achievements = [
     "1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.png", "8.png", "9.jpeg", "10.jpeg", "11.jpeg",
     "12.jpeg", "13.jpeg", "14.jpeg"
 ];
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 fetch('questions.json').then(res => res.json()).then(data => questions = data);
 
@@ -80,7 +81,7 @@ $("achievements-btn").onclick=()=>{ loadAchievements(); }
 function startJournal(){
     hideAll();
     $("journal-page").style.display="block";
-    const formattedToday = new Date(today).toLocaleDateString();
+    const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
     const pool=questions.filter(p=>p.ageMin<=currentUser.age&&p.ageMax>=currentUser.age);
@@ -190,7 +191,7 @@ function loadPrevious(){
     
     Object.entries(userEntries).forEach(([date, data]) => {
         const li = document.createElement("li");
-        const formattedDate = new Date(date).toLocaleDateString();
+        const formattedDate = new Date(date).toLocaleDateString("en-GB", options);
         console.log("formattedDate: "+ formattedDate);
         console.log("mood: "+ data.mood);
         li.innerText = formattedDate + ' - ' + data.mood;
@@ -208,7 +209,7 @@ function loadAchievements(){
     set.forEach(s => {
         const img=document.createElement("img");
         img.src=`achievements/${s}`
-        img.width=100;
+        img.width=window.innerWidth * 0.2;
         $("achievements-list").append(img);
     });
 }
