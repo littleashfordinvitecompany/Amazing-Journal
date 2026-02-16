@@ -199,7 +199,8 @@ function loadPreviousList(){
             e.preventDefault();
             loadPrevious(date, data);
         });
-        ul.appendChild(link);
+        li.appendChild(link);
+        ul.appendChild(li);
     });
     container.replaceChildren(ul);
 }
