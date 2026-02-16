@@ -193,7 +193,7 @@ function loadPrevious(){
         const formattedDate = new Date(date).toLocaleDateString();
         console.log("formattedDate: "+ formattedDate);
         console.log("mood: "+ data.mood);
-        li.innerText = ${formattedDate} + ' - ' + ${data.mood};
+        li.innerText = formattedDate + ' - ' + data.mood;
         ul.appendChild(li);
     });
     container.replaceChildren(ul);
