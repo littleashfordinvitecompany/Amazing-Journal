@@ -8,6 +8,7 @@ let achievements = [
     "12.jpeg", "13.jpeg", "14.jpeg"
 ];
 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+let fromPrevious = false;
 
 fetch('questions.json').then(res => res.json()).then(data => questions = data);
 
@@ -79,6 +80,7 @@ $("previous-pages-btn").onclick=()=>{ loadPreviousList(); }
 $("achievements-btn").onclick=()=>{ loadAchievements(); }
 
 function startJournal(){
+    fromPrevious = false;
     hideAll();
     $("journal-page").style.display="block";
     const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
@@ -205,6 +207,7 @@ function loadPreviousList(){
 }
 
 function loadPrevious(date, data) {
+    fromPrevious = true;
     hideAll();
     $("journal-page").style.display="block";
     const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
@@ -253,6 +256,15 @@ function loadAchievements(){
     });
 }
 
-$("back-journal-btn").onclick=()=>$("selection-page").style.display="block";
+$("back-journal-btn").onclick=()=> {
+    hideAll(); 
+    if (fromPrevious) {
+        loadPreviousList();
+    }
+    else {
+        $("selection-page").style.display="block";
+    }
+    
+};
 $("back-from-previous").onclick=()=>$("selection-page").style.display="block";
 $("back-from-achievements").onclick=()=>$("selection-page").style.display="block";
