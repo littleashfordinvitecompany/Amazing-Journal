@@ -179,8 +179,10 @@ $("save-entry-btn").onclick=() => {
     };
     localStorage.setItem("entries",JSON.stringify(entries));
     const imageSrc = "achievements/" + earnedAchievement;
-    console.log("ImageSrc: " + imageSrc);
-    $("achievement").innerHTML="<img src" + imageSrc + " alt='achievement!'/>";
+    const img=document.createElement("img");
+    img.src=`achievements/${imageSrc}`
+    img.width=window.innerWidth * 0.2;
+    $("achievement").replaceChildren(img);
 };
 
 function loadPreviousList(){
@@ -219,21 +221,24 @@ function loadPrevious(date, data) {
         if (checkbox) {
             checkbox.checked = true;
         } else {
-            $("other-emotion").textContent = selectedMood;
+            $("other-emotion").value = selectedMood;
         }
     });
     
-    $("good-thing-1").textContent=data.goodThing1;
-    $("good-thing-2").textContent=data.goodThing2;
-    $("good-thing-3").textContent=data.goodThing3;
+    $("good-thing-1").value=data.goodThing1;
+    $("good-thing-2").value=data.goodThing2;
+    $("good-thing-3").value=data.goodThing3;
     
-    $("daily-qu-1").textContent=data.dailyQu1;
+    $("daily-qu-1").innerText=data.dailyQu1;
     $("daily-answer-1").textContent=data.dailyAns1;
-    $("daily-qu-2").textContent=data.dailyQu2;
+    $("daily-qu-2").innerText=data.dailyQu2;
     $("daily-answer-2").textContent=data.dailyAns2;
     
     const imageSrc = "achievements/" + data.achievement;
-    $("achievement").innerHTML="<img src" + imageSrc + " alt='achievement!'/>";
+    const img=document.createElement("img");
+    img.src=`achievements/${imageSrc}`
+    img.width=window.innerWidth * 0.2;
+    $("achievement").replaceChildren(img);
 
     const img = new Image();
     img.src = data.draw;
