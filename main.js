@@ -74,8 +74,8 @@ $("draw-btn").onclick=()=>{
     $("draw-area").style.display=newDisplayStyle; clearCanvas();
 }
 
-$("previous-pages-btn").onclick=()=>{ hideAll(); loadPrevious(); }
-$("achievements-btn").onclick=()=>{ hideAll(); loadAchievements(); }
+$("previous-pages-btn").onclick=()=>{ loadPrevious(); }
+$("achievements-btn").onclick=()=>{ loadAchievements(); }
 
 function startJournal(){
     hideAll();
