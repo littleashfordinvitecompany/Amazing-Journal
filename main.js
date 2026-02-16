@@ -83,6 +83,7 @@ function startJournal(){
     fromPrevious = false;
     hideAll();
     $("journal-page").style.display="block";
+    $("save-entry-btn").style.display="block";
     const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
@@ -185,6 +186,14 @@ $("save-entry-btn").onclick=() => {
     $("achievement").replaceChildren(img);
 };
 
+function isCanvasEmpty() {
+    const empty = document.createElement("canvas");
+    empty.width = canvas.width;
+    empty.height = canvas.height;
+
+    return canvas.toDataURL("image/png") === empty.toDataURL("image/png");
+}
+
 function loadPreviousList(){
     hideAll();
     $("previous-page").style.display="block";
@@ -212,6 +221,7 @@ function loadPrevious(date, data) {
     fromPrevious = true;
     hideAll();
     $("journal-page").style.display="block";
+    $("save-entry-btn").style.display="none";
     const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
@@ -244,6 +254,9 @@ function loadPrevious(date, data) {
     canvasImg.src = data.draw;
     canvasImg.onload = () => {
         ctx.drawImage(canvasImg, 0, 0);
+    }
+    if (!isCanvasEmpty()) {
+        $("draw-area").style.display="block";
     }
 }    
 
