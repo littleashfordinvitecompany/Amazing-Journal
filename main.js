@@ -181,7 +181,7 @@ $("save-entry-btn").onclick=() => {
 };
 
 function loadPrevious(){
-
+    hideAll();
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
 
@@ -204,7 +204,7 @@ function loadAchievements(){
     $("achievements-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
     const set = new Set(Object.values(userEntries).map(value => value.achievement));
-    $("achievements-list").innerHTML='';
+    $("achievements-list").innerHTML='';   
     set.forEach(s => {
         const img=document.createElement("img");
         img.src=`achievements/${s}`
