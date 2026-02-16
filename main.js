@@ -192,7 +192,7 @@ function loadPreviousList(){
         const formattedDate = new Date(date).toLocaleDateString("en-GB", options);
         const link = document.createElement("a");
         link.href = "#";
-        link.textContext = formattedDate;
+        link.textContent = formattedDate;
         link.addEventListener("click", (e) => {
             e.preventDefault();
             loadPrevious(date, data);
