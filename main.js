@@ -198,7 +198,7 @@ function loadPreviousList(){
             loadPrevious(date, data);
         });
         container.appendChild(link);
-        container.appendChild(document.createElement("br");
+        container.appendChild(document.createElement("br"));
     });
 }
 
