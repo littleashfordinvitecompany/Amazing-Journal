@@ -75,7 +75,7 @@ $("draw-btn").onclick=()=>{
     $("draw-area").style.display=newDisplayStyle; clearCanvas();
 }
 
-$("previous-pages-btn").onclick=()=>{ loadPrevious(); }
+$("previous-pages-btn").onclick=()=>{ loadPreviousList(); }
 $("achievements-btn").onclick=()=>{ loadAchievements(); }
 
 function startJournal(){
@@ -142,11 +142,12 @@ function clearCanvas(){
 }
 
 document.querySelectorAll("#mood-picker button").forEach(b => {
-    b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id) : [...mood, b.id];}
+    b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id) : [...mood, b.id]; console.log("Mood: " + mood);}
 });
 
 $("other-emotion").addEventListener("blur", (event) => {
     if (event.target.value) {
+        console.log("Mood: " + mood);
         mood.push(event.target.value);
     }
 });
@@ -160,7 +161,6 @@ $("save-entry-btn").onclick=() => {
     if(!mood.length) return alert("You've not selected how you feel");
     if(!$("good-thing-1").value || !$("good-thing-2").value || !$("good-thing-3").value || !$("daily-answer-1").value || !$("daily-answer-2").value) return alert("Please complete the questions");
     const earnedAchievement = getRandomAchievement();
-    console.log("Earned Achievement: " + earnedAchievement);
     const entries=JSON.parse(localStorage.getItem("entries")||"{}");
     entries[currentUser.name]=entries[currentUser.name]||{};
     entries[currentUser.name][today]= {
@@ -176,12 +176,12 @@ $("save-entry-btn").onclick=() => {
         achievement: earnedAchievement,
     };
     localStorage.setItem("entries",JSON.stringify(entries));
-    const imageSrc = "achievements/${earnedAchievement}";
+    const imageSrc = "achievements/" + earnedAchievement;
     console.log("ImageSrc: " + imageSrc);
-    $("achievement").innerHTML='<img src"${imageSrc}" alt="achievement!"/>';
+    $("achievement").innerHTML="<img src" + imageSrc + " alt='achievement!'/>";
 };
 
-function loadPrevious(){
+function loadPreviousList(){
     hideAll();
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
@@ -194,11 +194,45 @@ function loadPrevious(){
         const formattedDate = new Date(date).toLocaleDateString("en-GB", options);
         console.log("formattedDate: "+ formattedDate);
         console.log("mood: "+ data.mood);
-        li.innerText = formattedDate + ' - ' + data.mood;
+        li.innerText = "<a href='#' onclick='loadPrevious(date, data);>" + formattedDate + "</a>";
         ul.appendChild(li);
     });
     container.replaceChildren(ul);
 }
+
+function loadPrevious(Date date, var data) {
+    hideAll();
+    $("journal-page").style.display="block";
+    const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
+    $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
+
+    data.mood.forEach(selectedMood => {
+        const checkbox = $(selectedMood);
+        if (checkbox) {
+            checkbox.checked = true;
+        } else {
+            $("other-emotion").innerText = selectedMood;
+        }
+    });
+    
+    $("good-thing-1").innerText=data.goodThing1;
+    $("good-thing-2").innerText=data.goodThing2;
+    $("good-thing-3").innerText=data.goodThing3;
+    
+    $("daily-qu-1").textContent=data.dailyQu1;
+    $("daily-answer-1").innerText=data.dailyAns1;
+    $("daily-qu-2").textContent=data.dailyQu2;
+    $("daily-answer-2").innerText=data.dailyAns2;
+    
+    const imageSrc = "achievements/" + data.achievement;
+    $("achievement").innerHTML="<img src" + imageSrc + " alt='achievement!'/>";
+
+    const img = new Image();
+    img.src = data.draw;
+    img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+    }
+}    
 
 function loadAchievements(){
     hideAll();
