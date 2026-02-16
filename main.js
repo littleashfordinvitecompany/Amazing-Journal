@@ -192,15 +192,19 @@ function loadPreviousList(){
     Object.entries(userEntries).forEach(([date, data]) => {
         const li = document.createElement("li");
         const formattedDate = new Date(date).toLocaleDateString("en-GB", options);
-        console.log("formattedDate: "+ formattedDate);
-        console.log("mood: "+ data.mood);
-        li.innerText = "<a href='#' onclick='loadPrevious(date, data);>" + formattedDate + "</a>";
-        ul.appendChild(li);
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContext = formattedDate;
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPrevious(date, data);
+        });
+        ul.appendChild(link);
     });
     container.replaceChildren(ul);
 }
 
-function loadPrevious(Date date, var data) {
+function loadPrevious(date, data) {
     hideAll();
     $("journal-page").style.display="block";
     const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
