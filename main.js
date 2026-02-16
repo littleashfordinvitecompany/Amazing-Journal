@@ -187,10 +187,8 @@ function loadPreviousList(){
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
 
     const container = $("entries-list");
-    const ul = document.createElement("ul");
     
     Object.entries(userEntries).forEach(([date, data]) => {
-        const li = document.createElement("li");
         const formattedDate = new Date(date).toLocaleDateString("en-GB", options);
         const link = document.createElement("a");
         link.href = "#";
@@ -199,10 +197,9 @@ function loadPreviousList(){
             e.preventDefault();
             loadPrevious(date, data);
         });
-        li.appendChild(link);
-        ul.appendChild(li);
+        container.appendChild(link);
+        container.appendChild(document.createElement("br");
     });
-    container.replaceChildren(ul);
 }
 
 function loadPrevious(date, data) {
