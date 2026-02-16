@@ -181,7 +181,7 @@ $("save-entry-btn").onclick=() => {
 };
 
 function loadPrevious(){
-    hideAll();
+
     $("previous-page").style.display="block";
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
 
