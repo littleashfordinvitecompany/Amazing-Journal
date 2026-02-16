@@ -187,6 +187,7 @@ function loadPreviousList(){
     const userEntries = JSON.parse(localStorage.getItem("entries")||"{}")[currentUser.name]||{};
 
     const container = $("entries-list");
+    const div = document.createElement("div");
     
     Object.entries(userEntries).forEach(([date, data]) => {
         const formattedDate = new Date(date).toLocaleDateString("en-GB", options);
@@ -197,9 +198,10 @@ function loadPreviousList(){
             e.preventDefault();
             loadPrevious(date, data);
         });
-        container.appendChild(link);
-        container.appendChild(document.createElement("br"));
+        div.appendChild(link);
+        div.appendChild(document.createElement("br"));
     });
+    container.replaceChildren(div);
 }
 
 function loadPrevious(date, data) {
@@ -209,22 +211,23 @@ function loadPrevious(date, data) {
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
     data.mood.forEach(selectedMood => {
+        console.log("Mood load: " + selectedMood);
         const checkbox = $(selectedMood);
         if (checkbox) {
             checkbox.checked = true;
         } else {
-            $("other-emotion").innerText = selectedMood;
+            $("other-emotion").textContent = selectedMood;
         }
     });
     
-    $("good-thing-1").innerText=data.goodThing1;
-    $("good-thing-2").innerText=data.goodThing2;
-    $("good-thing-3").innerText=data.goodThing3;
+    $("good-thing-1").textContent=data.goodThing1;
+    $("good-thing-2").textContent=data.goodThing2;
+    $("good-thing-3").textContent=data.goodThing3;
     
     $("daily-qu-1").textContent=data.dailyQu1;
-    $("daily-answer-1").innerText=data.dailyAns1;
+    $("daily-answer-1").textContent=data.dailyAns1;
     $("daily-qu-2").textContent=data.dailyQu2;
-    $("daily-answer-2").innerText=data.dailyAns2;
+    $("daily-answer-2").textContent=data.dailyAns2;
     
     const imageSrc = "achievements/" + data.achievement;
     $("achievement").innerHTML="<img src" + imageSrc + " alt='achievement!'/>";
