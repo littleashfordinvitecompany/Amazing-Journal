@@ -240,10 +240,10 @@ function loadPrevious(date, data) {
     img.width=window.innerWidth * 0.2;
     $("achievement").replaceChildren(img);
 
-    const img = new Image();
-    img.src = data.draw;
-    img.onload = () => {
-        ctx.drawImage(img, 0, 0);
+    const canvasImg = new Image();
+    canvasImg.src = data.draw;
+    canvasImg.onload = () => {
+        ctx.drawImage(canvasImg, 0, 0);
     }
 }    
 
