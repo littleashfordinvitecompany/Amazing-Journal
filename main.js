@@ -146,7 +146,7 @@ function clearCanvas(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
 }
 
-document.querySelectorAll("#mood-picker button").forEach(b => {
+document.querySelectorAll("#mood-picker input").forEach(b => {
     b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id) : [...mood, b.id]; console.log("Mood: " + mood);}
 });
 
@@ -219,6 +219,25 @@ function loadPreviousList(){
     container.replaceChildren(div);
 }
 
+function clearInputs() {
+    document.querySelectorAll("#mood-picker input").forEach(b => {
+        b.checked = false;
+    });
+    $("other-emotion").value = "";
+
+    $("good-thing-1").value="";
+    $("good-thing-2").value="";
+    $("good-thing-3").value="";
+
+    $("daily-qu-1").innerText="";
+    $("daily-answer-1").textContent="";
+    $("daily-qu-2").innerText="";
+    $("daily-answer-2").textContent="";
+    
+    $("achievement").replaceChildren();
+    clearCanvas();
+}
+
 function loadPrevious(date, data) {
     fromPrevious = true;
     hideAll();
@@ -285,14 +304,14 @@ function loadAchievements(){
 }
 
 $("back-journal-btn").onclick=()=> {
-    hideAll(); 
+    hideAll();
+    clearInputs();
     if (fromPrevious) {
         loadPreviousList();
     }
     else {
         $("selection-page").style.display="block";
     }
-    
 };
 $("back-from-previous").onclick=()=>$("selection-page").style.display="block";
 $("back-from-achievements").onclick=()=>$("selection-page").style.display="block";
