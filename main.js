@@ -173,9 +173,9 @@ $("save-entry-btn").onclick=() => {
         goodThing1: $("good-thing-1").value,
         goodThing2: $("good-thing-2").value,
         goodThing3: $("good-thing-3").value,
-        dailyQu1: currentQuestions[0].value,
+        dailyQu1: currentQuestions[0].text,
         dailyAns1: $("daily-answer-1").value,
-        dailyQu2: currentQuestions[1].value,
+        dailyQu2: currentQuestions[1].text,
         dailyAns2: $("daily-answer-2").value,
         draw: canvas.toDataURL("image/png"),
         achievement: earnedAchievement,
@@ -238,7 +238,7 @@ function loadPrevious(date, data) {
             $("other-emotion").value = selectedMood;
         }
     });
-    
+    console.log("data: " + JSON.stringify(data));
     $("good-thing-1").value=data.goodThing1;
     $("good-thing-2").value=data.goodThing2;
     $("good-thing-3").value=data.goodThing3;
