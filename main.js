@@ -282,11 +282,10 @@ function loadPrevious(date, data) {
     canvasImg.src = data.draw;
     canvasImg.onload = () => {
         ctx.drawImage(canvasImg, 0, 0);
+        if (!isCanvasEmpty()) {
+            $("draw-area").style.display="block";
+        }
     }
-    if (!isCanvasEmpty()) {
-        $("draw-area").style.display="block";
-    }
-    $("draw-area").style.display="block";
 }    
 
 function journalPageDisabled(trueFalse) {
