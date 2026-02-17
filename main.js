@@ -286,6 +286,7 @@ function loadPrevious(date, data) {
     if (!isCanvasEmpty()) {
         $("draw-area").style.display="block";
     }
+    $("draw-area").style.display="block";
 }    
 
 function journalPageDisabled(trueFalse) {
