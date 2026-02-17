@@ -264,7 +264,7 @@ function loadPrevious(date, data) {
 
 function journalPageDisabled(trueFalse) {
     const journalPage = $("journal-page");
-    document.querySelectorAll("input, textarea").forEach(a => a.disabled = trueFalse;);
+    document.querySelectorAll("input, textarea").forEach(a => a.disabled = trueFalse);
 }
 
 function loadAchievements(){
