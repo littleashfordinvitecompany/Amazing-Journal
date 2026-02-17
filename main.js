@@ -147,7 +147,11 @@ function clearCanvas(){
 }
 
 document.querySelectorAll("#mood-picker input").forEach(b => {
-    b.onchange = ()=>{ mood.includes(b.id) ? mood.filter(item => item !== b.id) : [...mood, b.id]; console.log("Mood: " + mood);}
+    b.onchange = ()=>{ 
+        console.log("selected: " + b.id);
+        mood.includes(b.id) ? mood.filter(item => item !== b.id) : mood.push(b.id); 
+        console.log("Mood: " + mood);
+    }
 });
 
 $("other-emotion").addEventListener("blur", (event) => {
