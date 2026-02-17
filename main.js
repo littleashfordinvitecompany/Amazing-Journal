@@ -181,7 +181,7 @@ $("save-entry-btn").onclick=() => {
     localStorage.setItem("entries",JSON.stringify(entries));
     const imageSrc = "achievements/" + earnedAchievement;
     const img=document.createElement("img");
-    img.src=`achievements/${imageSrc}`
+    img.src=imageSrc
     img.width=window.innerWidth * 0.2;
     $("achievement").replaceChildren(img);
 };
@@ -246,7 +246,7 @@ function loadPrevious(date, data) {
     
     const imageSrc = "achievements/" + data.achievement;
     const img=document.createElement("img");
-    img.src=`achievements/${imageSrc}`
+    img.src=imageSrc
     img.width=window.innerWidth * 0.2;
     $("achievement").replaceChildren(img);
 
