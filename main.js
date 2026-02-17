@@ -83,8 +83,8 @@ function startJournal(){
     fromPrevious = false;
     hideAll();
     $("journal-page").style.display="block";
-    $("save-entry-btn").style.display="block";
-    $("draw-btn").style.display="block";
+    $("save-entry-btn").style.display="inline-block";
+    $("draw-btn").style.display="inline-block";
     journalPageDisabled(false);
     const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
