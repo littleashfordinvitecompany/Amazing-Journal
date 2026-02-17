@@ -84,6 +84,7 @@ function startJournal(){
     hideAll();
     $("journal-page").style.display="block";
     $("save-entry-btn").style.display="block";
+    journalPageDisabled(false);
     const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
@@ -222,6 +223,7 @@ function loadPrevious(date, data) {
     hideAll();
     $("journal-page").style.display="block";
     $("save-entry-btn").style.display="none";
+    journalPageDisabled(true);
     const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
@@ -259,6 +261,11 @@ function loadPrevious(date, data) {
         $("draw-area").style.display="block";
     }
 }    
+
+function journalPageDisabled(trueFalse) {
+    const journalPage = $("journal-page");
+    document.querySelectorAll("input, textarea").forEach(a => a.disabled = trueFalse;);
+}
 
 function loadAchievements(){
     hideAll();
