@@ -84,6 +84,7 @@ function startJournal(){
     hideAll();
     $("journal-page").style.display="block";
     $("save-entry-btn").style.display="block";
+    $("draw-btn").style.display="block";
     journalPageDisabled(false);
     const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
@@ -223,6 +224,7 @@ function loadPrevious(date, data) {
     hideAll();
     $("journal-page").style.display="block";
     $("save-entry-btn").style.display="none";
+    $("draw-btn").style.display="none";
     journalPageDisabled(true);
     const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
@@ -240,7 +242,8 @@ function loadPrevious(date, data) {
     $("good-thing-1").value=data.goodThing1;
     $("good-thing-2").value=data.goodThing2;
     $("good-thing-3").value=data.goodThing3;
-    
+    console.log("qu1: " + data.dailyQu1);
+    console.log("qu2: " + data.dailyQu2);
     $("daily-qu-1").innerText=data.dailyQu1;
     $("daily-answer-1").textContent=data.dailyAns1;
     $("daily-qu-2").innerText=data.dailyQu2;
