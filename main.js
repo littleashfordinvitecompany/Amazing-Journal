@@ -85,6 +85,7 @@ function startJournal(){
     $("journal-page").style.display="block";
     $("save-entry-btn").style.display="inline-block";
     $("draw-btn").style.display="inline-block";
+    $("clear-canvas").style.display="inline-block";
     journalPageDisabled(false);
     const formattedToday = new Date(today).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
@@ -248,6 +249,7 @@ function loadPrevious(date, data) {
     $("journal-page").style.display="block";
     $("save-entry-btn").style.display="none";
     $("draw-btn").style.display="none";
+    $("clear-canvas").style.display="none";
     journalPageDisabled(true);
     const formattedToday = new Date(date).toLocaleDateString("en-GB", options);
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
@@ -290,7 +292,12 @@ function loadPrevious(date, data) {
 
 function journalPageDisabled(trueFalse) {
     const journalPage = $("journal-page");
-    document.querySelectorAll("input, textarea, canvas").forEach(a => a.disabled = trueFalse);
+    document.querySelectorAll("input, textarea").forEach(a => a.disabled = trueFalse);
+    if (trueFalse) {
+        canvas.classList.add("read-only");
+    } else {
+        canvas.classList.remove("read-only");
+    }
 }
 
 function loadAchievements(){
