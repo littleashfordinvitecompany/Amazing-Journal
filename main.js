@@ -149,15 +149,12 @@ function clearCanvas(){
 
 document.querySelectorAll("#mood-picker input").forEach(b => {
     b.onchange = ()=>{ 
-        console.log("selected: " + b.id);
         mood.includes(b.id) ? mood.filter(item => item !== b.id) : mood.push(b.id); 
-        console.log("Mood: " + mood);
     }
 });
 
 $("other-emotion").addEventListener("blur", (event) => {
     if (event.target.value) {
-        console.log("Mood: " + mood);
         mood.push(event.target.value);
     }
 });
@@ -255,7 +252,6 @@ function loadPrevious(date, data) {
     $("journal-welcome").innerText=`Welcome ${currentUser.name} - ${formattedToday}`;
 
     data.mood.forEach(selectedMood => {
-        console.log("Mood load: " + selectedMood);
         const checkbox = $(selectedMood);
         if (checkbox) {
             checkbox.checked = true;
@@ -263,12 +259,9 @@ function loadPrevious(date, data) {
             $("other-emotion").value = selectedMood;
         }
     });
-    console.log("data: " + JSON.stringify(data));
     $("good-thing-1").value=data.goodThing1;
     $("good-thing-2").value=data.goodThing2;
     $("good-thing-3").value=data.goodThing3;
-    console.log("qu1: " + data.dailyQu1);
-    console.log("qu2: " + data.dailyQu2);
     $("daily-qu-1").innerText=data.dailyQu1;
     $("daily-answer-1").textContent=data.dailyAns1;
     $("daily-qu-2").innerText=data.dailyQu2;
