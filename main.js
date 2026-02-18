@@ -317,5 +317,17 @@ $("back-journal-btn").onclick=()=> {
         $("selection-page").style.display="block";
     }
 };
-$("back-from-previous").onclick=()=>$("selection-page").style.display="block";
-$("back-from-achievements").onclick=()=>$("selection-page").style.display="block";
+$("back-from-previous").onclick=()=> {
+    hideAll();
+    $("selection-page").style.display="block";
+}
+$("back-from-achievements").onclick=()=> {
+    hideAll();
+    $("selection-page").style.display="block";
+}
+$("back-to-user").onclick=()=> {
+    currentUser = null;
+    hideAll();
+    $("home-page").style.display="block";
+    
+}
