@@ -81,6 +81,11 @@ canvas {
     background-color: blanchedalmond;
 }
 
+canvas.read-only {
+    pointer-events: none;
+    cursor: default;
+}
+
 .good-things {
     width:80%;
     border-radius: 10px;
