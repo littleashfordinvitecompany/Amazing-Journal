@@ -136,8 +136,6 @@ canvas.addEventListener("pointermove", e=>{
     ctx.moveTo(e.clientX-r.left,e.clientY-r.top);
 });
 
-$("colours").style.width=window.innerWidth * 0.8;
-
 window.addEventListener('resize', () => {
    canvas.width=window.innerWidth * 0.8; 
    canvas.height=window.innerHeight * 0.8;
