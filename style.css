@@ -86,6 +86,11 @@ canvas.read-only {
     cursor: default;
 }
 
+.colours {
+    display: inline-block;
+    width: 80%;
+}
+
 .good-things {
     width:80%;
     border-radius: 10px;
